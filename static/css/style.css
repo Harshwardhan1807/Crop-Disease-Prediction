@@ -1,0 +1,126 @@
+/* Reset margin and padding for body and html */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    font-family: Arial, sans-serif;
+    background-color: #d6f0dd;
+    display: flex;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+    box-sizing: border-box;
+    justify-content: center;
+} 
+
+
+
+h1 {
+    color: #4CAF50;
+}
+
+input[type="file"] {
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 30px;
+    display: none;
+}
+
+.result h2 {
+    color: #d32f2f;
+}
+
+.result p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Basic Navbar Styling */
+nav {
+    width: 25%;
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#class-navbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#class-navbar li {
+    margin: 0;
+}
+
+#title-classes {
+    color: #4CAF50;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    display: block;
+    position: relative;
+}
+
+#title-classes::after {
+    content: '\f0d7';  /* Unicode for FontAwesome down arrow */
+    font-family: 'Font Awesome 5 Free'; /* Ensure you're using Font Awesome 5 */
+    font-weight: 900; /* Necessary for free version of FA */
+    position: absolute;
+    margin: 0 10%   ; /* Positioning the icon on the right side */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+#title-classes:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+/* Hide classes list by default */
+#classes-list {
+    display: none;
+    margin-top: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Style each class inside the list */
+#classes-list li {
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+#classes-list li:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+

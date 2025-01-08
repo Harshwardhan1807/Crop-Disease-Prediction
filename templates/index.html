@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Prediction</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul id="class-navbar">
+                <li>
+                    <span id="title-classes">Possible Classes</span>
+                    <ul id="classes-list">
+                        <li>Potato___Early_blight</li>
+                        <li>Potato___Late_blight</li>
+                        <li>Potato___healthy</li>
+                        <li>Tomato___Bacterial_spot</li>
+                        <li>Tomato___Early_blight</li>
+                        <li>Tomato___Late_blight</li>
+                        <li>Tomato___Leaf_Mold</li>
+                        <li>Tomato___Septoria_leaf_spot</li>
+                        <li>Tomato___Spider_mites Two-spotted_spider_mite</li>
+                        <li>Tomato___Target_Spot</li>
+                        <li>Tomato___Tomato_Yellow_Leaf_Curl_Virus</li>
+                        <li>Tomato___Tomato_mosaic_virus</li>
+                        <li>Tomato___healthy</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <h1>Crop Disease Prediction</h1>
+        <form id="upload-form" action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-upload" accept="image/*" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result" class="result">
+            <h2 id="predicted-class"></h2>
+            <p>Confidence: <span id="confidence"></span>%</p>
+        </div>
+    </div>
+
+    <script src="static/js/script.js"></script>
+</body>
+
+</html>
