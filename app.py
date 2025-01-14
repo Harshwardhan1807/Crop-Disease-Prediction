@@ -10,20 +10,21 @@ CORS(app)  # Enable CORS for API calls
 model = tf.keras.models.load_model('model.h5')
 
 CLASS_LABELS = [
-                'Potato___Early_blight',
-                'Potato___Late_blight',
-                'Potato___healthy',
-                'Tomato___Bacterial_spot',
-                'Tomato___Early_blight',
-                'Tomato___Late_blight',
-                'Tomato___Leaf_Mold',
-                'Tomato___Septoria_leaf_spot',
-                'Tomato___Spider_mites Two-spotted_spider_mite',
-                'Tomato___Target_Spot',
-                'Tomato___Tomato_Yellow_Leaf_Curl_Virus',
-                'Tomato___Tomato_mosaic_virus',
-                'Tomato___healthy'
-                ]
+    'Potato - Early Blight',
+    'Potato - Late Blight',
+    'Potato - Healthy',
+    'Tomato - Bacterial Spot',
+    'Tomato - Early Blight',
+    'Tomato - Late Blight',
+    'Tomato - Leaf Mold',
+    'Tomato - Septoria Leaf Spot',
+    'Tomato - Spider Mites (Two-spotted Spider Mite)',
+    'Tomato - Target Spot',
+    'Tomato - Yellow Leaf Curl Virus',
+    'Tomato - Mosaic Virus',
+    'Tomato - Healthy'
+]
+
 
 def prepare_image(img):
     img = img.resize((256, 256))
@@ -41,7 +42,11 @@ def predict():
     img = Image.open(file).convert('RGB')
     processed_image = prepare_image(img)
     predictions = model.predict(processed_image)
-    predicted_class = CLASS_LABELS[np.argmax(predictions)]
+    try:
+        predicted_class = CLASS_LABELS[np.argmax(predictions)]
+    except Exception:
+        predicted_class = "Cannot be identified"
+        confidence = 0
     confidence = float(np.max(predictions))
     return jsonify({'class': predicted_class, 'confidence': confidence})
 
