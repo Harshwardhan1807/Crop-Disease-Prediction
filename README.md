@@ -1,1 +1,2 @@
 # Crop-Disease-Prediction
+### This Crop Disease Prediction project is a web application built using Flask and TensorFlow. It allows users to upload images of crop leaves and predicts Potato or Tomato diseases based on a deep learning model built using CNN trained on 20,312 images from a Kaggle dataset. The results, including predicted disease and confidence, are displayed along with the uploaded image. 
