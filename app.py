@@ -1,15 +1,20 @@
 from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
+
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+import os
+import requests
+
+model = tf.keras.models.load_model('saved_model')
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for API calls
 
-model = tf.keras.models.load_model('model.h5')
+
 
 CLASS_LABELS = [
+    'Pepper, bell - Bacterial Spot',
+    'Pepper, bell - Healthy',
     'Potato - Early Blight',
     'Potato - Late Blight',
     'Potato - Healthy',
@@ -42,11 +47,7 @@ def predict():
     img = Image.open(file).convert('RGB')
     processed_image = prepare_image(img)
     predictions = model.predict(processed_image)
-    try:
-        predicted_class = CLASS_LABELS[np.argmax(predictions)]
-    except Exception:
-        predicted_class = "Cannot be identified"
-        confidence = 0
+    predicted_class = CLASS_LABELS[np.argmax(predictions)]
     confidence = float(np.max(predictions))
     return jsonify({'class': predicted_class, 'confidence': confidence})
 
